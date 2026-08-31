@@ -28,6 +28,8 @@ Mimics Kindle's "生字注音" (ruby annotation): overlays **pinyin above each c
   Vocabulary-book integration (v6.0+): words added to KOReader's vocab builder get annotated only when the whole word appears.
 - **默认读音修正（v6.0+）**：修正 kTGHZ2013 数据源把罕见读音排前的 430 字（行 háng→xíng、重 chóng→zhòng 等）。
   Default-pronunciation fixes (v6.0+) for 430 chars.
+- **繁体书模式（v2.1 新增）**：读繁体（传统汉字）书时打开菜单开关「繁体书模式」，繁体字即按等级正常注音，并完整参与词组辨音（銀行→yín háng）与生词本联动。简繁一对多歧义（頭髮 fà / 出發 fā）在数据表生成期由 OpenCC 词组级转换解析；运行时与简体通道同为纯查表，翻页速度同构。**关闭时简体书行为完全不变。**
+  Traditional-Chinese mode (new in v2.1): flip one menu switch when reading traditional-script books; traditional characters get leveled annotation, phrase disambiguation (銀行 → yín háng) and vocab-book integration. One-to-many mapping ambiguities are resolved offline via OpenCC phrase-level conversion; runtime stays pure lookup with zero page-turn impact. With the switch off, simplified-book behavior is byte-for-byte unchanged.
 - **可调样式**：拼音字号、颜色（黑/深灰）。
   Adjustable size & color (black/dark grey).
 - **自动重绘**：翻页后自动重新标注；关闭时清除。
@@ -43,8 +45,8 @@ Mimics Kindle's "生字注音" (ruby annotation): overlays **pinyin above each c
 3. 打开中文书籍 → 顶部菜单 → 齿轮（设置）→ 注音相关菜单项调节等级/样式
    Open a Chinese book → top menu → gear (settings) → adjust level/style.
 
-> 对外版本号 v2.0（内部迭代号 6.4）。PDF 支持有限，详见 `pinyin.koplugin/README.md`。
-> Public version v2.0 (internal iteration 6.4). PDF support is limited; see `pinyin.koplugin/README.md`.
+> 对外版本号 v2.1（内部迭代号 6.5）。PDF 支持有限，详见 `pinyin.koplugin/README.md`。
+> Public version v2.1 (internal iteration 6.5). PDF support is limited; see `pinyin.koplugin/README.md`.
 
 ## 📜 许可证 / License
 
@@ -54,7 +56,7 @@ GPL-3.0 (see `pinyin.koplugin/LICENSE`).
 ## 🙏 原作者与鸣谢 / Original Authors & Credits
 
 - **原作者 / Original author**: **zhouwt**（`config.lua` 署名 `Copyright (C) 2026 zhouwt`，GPL-3.0）
-- **自用修改版 / Personal modified build**: 在此之上针对性能与体验优化（生僻字扩展、词组辨音、生词本联动等）
+- **自用修改版 / Modified build**: **ChuckLee93**（生僻字扩展、词组辨音、生词本联动、繁体书模式等）
 
 感谢原作者 zhouwt 的创作。本仓库为自用修改版，功能与行为差异见 `使用说明.txt`。
 Thanks to the original author zhouwt. This repo is a personally-modified build; see `使用说明.txt` for what changed.
